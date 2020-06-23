@@ -1,0 +1,20 @@
+﻿@model IList<Category>
+
+<h2>Our Categories</h2>
+<div id="catApp">
+    <div class="row">
+        @foreach (var cat in Model)
+        {
+            <div class="col-sm-6 col-lg-4 my-3">
+                <div class="card">
+                    <a href="/@cat.Slug"><partial name="~/Views/Shared/_fakeImg.cshtml" /></a>
+                    <div class="card-body">
+                        <h5 class="card-title">@cat.Name</h5>
+                        <p class="small">Check our selection of <strong>@cat.Name</strong>.</p>
+                        <a href="/@cat.Slug" class="small">View all products in @cat.Name</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

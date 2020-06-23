@@ -1,0 +1,24 @@
+﻿@model Product
+
+<div class="mb-lg-5">
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <partial name="~/Views/Shared/_FakeImg.cshtml" />
+            <partial name="~/Views/Shared/_FakeThumbnails.cshtml" />
+        </div>
+        <div class="col-sm-6 col-md-8">
+            <h3>@Model.Name</h3>
+            <div class="small mb-2 border-bottom">
+                <div>
+                    Rating: @Model.Rating / 5
+                </div>
+            </div>
+            <p>Price: <span class="text-danger font-weight-bold">$ @Model.Price.ToString("0.00")</span></p>
+            <div class="small">
+                <strong class="d-block">Description:</strong>
+                <p>@Model.Description</p>
+            </div>
+            <a class="btn btn-primary" href="/">All Categories</a>
+        </div>
+    </div>
+</div>

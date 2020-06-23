@@ -1,0 +1,53 @@
+# ####################################################
+# ASP.NET DistributedCaching
+#   * Source code: github.com/hd9/aspnet-distributed-cahing
+#   * More about this app at: blog.hildenco.com
+# ####################################################
+
+# If you're looking to run all the services, run:
+# docker-compose up
+
+version: '3.7'
+
+services:
+
+  catalog-db:
+    image: mongo
+    environment:
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: todo
+      MONGO_INITDB_DATABASE: catalog
+    volumes:
+    - ./db.js:/docker-entrypoint-initdb.d/db.js:ro
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis:6-alpine
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8011:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=catalog-db
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: todo
+    depends_on:
+      - catalog-db
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=redis
+    ports:
+      - "8013:8081"
+    depends_on:
+      - redis

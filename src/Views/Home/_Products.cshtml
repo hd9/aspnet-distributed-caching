@@ -1,0 +1,28 @@
+﻿@model IList<Product>
+@{ 
+    string GetDescription(string desc)
+    {
+        var d = desc ?? "";
+        var l = d.Length;
+        return $"{(d.Length > 100 ? d.Substring(0, 100) + "..." : d)}";
+    }
+}
+
+<h2>Our Products </h2>
+<div id="catApp">
+    <div class="row">
+        @foreach (var prd in Model)
+        {
+            <div class="col-sm-6 col-lg-4 my-3">
+                <div class="card">
+                    <a href="/products/@prd.Slug"><partial name="~/Views/Shared/_fakeImg.cshtml" /></a>
+                    <div class="card-body">
+                        <h5 class="card-title">@prd.Name</h5>
+                        <p class="small">@GetDescription(prd.Description)...</p>
+                        <a href="/products/@prd.Slug" class="small">View product</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
