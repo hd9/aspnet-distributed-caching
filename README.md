@@ -10,7 +10,7 @@ using [ASP.NET Core](https://dotnet.microsoft.com/apps/aspnet),
 [Redis](https://redis.io/), [Vue.js](https://vuejs.org/).
 
 ## Read the Article
-To understand how to use this repo, make sure you read this article:
+To understand how to use this repo, make sure you read this article:   
 [Distributed caching in ASP.NET Core using Redis, MongoDB and Docker](https://blog.hildenco.com/2020/12/distributed-caching-in-aspnet-core.html)
 
 ## Source Code
